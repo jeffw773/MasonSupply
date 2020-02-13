@@ -61,4 +61,6 @@ C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Ma
 C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Mason Supply.csproj.CopyComplete
 C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Mason Supply.dll
 C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Mason Supply.pdb
-C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Razor\Views\Home\Estimation.cshtml.g.cs
+C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Razor\Views\Home\EstimationStart.cshtml.g.cs
+C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Razor\Views\Home\ReviewOrder.cshtml.g.cs
+C:\Users\jeffr\source\repos\Mason Supply\Mason Supply\obj\Debug\netcoreapp3.0\Razor\Views\Home\ShapeInput.cshtml.g.cs

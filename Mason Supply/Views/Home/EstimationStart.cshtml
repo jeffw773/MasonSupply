@@ -1,0 +1,42 @@
+﻿@model Mason_Supply.Models.Order
+
+@{
+    ViewData["Title"] = "Begin Cost Estimation";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width = device-width" />
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    
+
+
+    <title>
+        Order Input Form
+    </title>
+</head>
+<body>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    
+    <div>
+        <h1>
+           Start a new quote or view a list of previous quotes
+        </h1>
+    </div>
+    <div class="button-holder">
+		<a class="btn btn-primary" asp-action="ShapeInput">New Quote</a>
+	</div>
+    </div>
+    <br />
+    <br />
+	<p> Display previous quotes here! </p>
+		  <footer>
+		  Made by the bois
+		  </footer>
+</body>
+</html>

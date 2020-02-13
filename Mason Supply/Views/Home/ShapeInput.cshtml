@@ -1,0 +1,129 @@
+﻿@model Mason_Supply.Models.ShapeInputView
+@{
+    ViewData["Title"] = "Shape Input";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width = device-width" />
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    
+    <title>
+        Shape Input Form
+    </title>
+</head>
+<body>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
+
+<div class="form">
+        <form method="post">
+			<input type="hidden" value="@Model.Order.OrderID" asp-for="OrderID" />
+            <div asp-validation-summary="ModelOnly" style="background-color: red">
+            </div>
+            <div class="form-group">
+                <label asp-for="Shape.Rebar_Type">Rebar Type:</label>
+				<div><span asp-validation-for="Shape.Rebar_Type"> </span></div>
+                <input class="form-control"  asp-for="Shape.Rebar_Type" required="required"/>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Shape.Leg_Num">Number of Legs:</label>
+				<div><span asp-validation-for="Shape.Leg_Num"> </span></div>
+                <input class="form-control" asp-for="Shape.Leg_Num" required="required"/>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <label asp-for="Shape.Quantity">Quantity of this Shape:</label>
+				<div><span asp-validation-for="Shape.Quantity"> </span></div>
+                <input class="form-control" asp-for="Shape.Quantity" required="required"/>
+            </div>
+            <br />
+			
+<!---FAILED ATTEMPT
+			<script>
+			$('[name="cand_no"]').on('change', function() 
+			{
+				// Not checking for Invalid input
+				if (this.value != '') {
+					var val = parseInt(this.value, 10);
+
+					for (var i = 0; i < val; i++) {
+						// Clone the Template
+						var $cloned = $('.template tbody').clone();
+						// For each Candidate append the template row
+						$('#studentTable tbody').append($cloned.html());
+					}
+				}
+			});​
+			</script>
+
+			<div class="template" style="display: none">
+				<table>
+					<tr >
+						<td><input name="cand_name" type="text" placeholder="Name" required="required" /></td>
+						<td>
+							<select name="cand_sex" required="required">
+								<option value=" "> </option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+						</td>
+						<td><input name="cand_email" type="text" placeholder="Email" required="required" /></td>
+						<td><input name="cand_phone" type="text" placeholder="Phone" required="required" /></td>
+						<td><input name="cand_pos" type="text" placeholder="Position" required="required" /></td>
+					</tr>
+				</table>
+			</div>
+---------------------->
+
+
+<!--------ANOTHER FAILED ATTEMPT
+			@using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div id="fields"></div>
+
+                <button>Submit</button>
+            }
+
+
+            <div style="color:blue"><b>Data:</b> @ViewBag.Data</div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            var $fields = $('#fields');
+            $('#btnAddField').click(function(e) {
+                e.preventDefault();
+                $('<input type="text" name="dynamicField" /><br/>').appendTo($fields);
+            });
+        });
+
+    </script>
+
+------------------->
+
+
+
+            <div class="buttonHolder">
+                <button type="submit" asp-route-title="Model.Title">
+                    Add new shape
+                </button>
+            </div>
+			<br/>
+        </form>
+		<div class="buttonHolder">
+                <a class="btn btn-primary" asp-action="Index">
+                    Finish Order
+                </a>
+            </div>
+    </div>
+	</body>
+</html>

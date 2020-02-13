@@ -34,10 +34,15 @@ namespace Mason_Supply
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
+            //Added 2/10/2020
+            services.AddTransient<DbContext, ApplicationDbContext>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext applicationDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -50,6 +55,8 @@ namespace Mason_Supply
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            applicationDbContext.Database.Migrate();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

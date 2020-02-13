@@ -19,6 +19,107 @@ namespace Mason_Supply.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Mason_Supply.Models.Angle", b =>
+                {
+                    b.Property<int>("AngleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Mandrel")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("ShapeID")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TheAngle")
+                        .HasColumnType("float");
+
+                    b.HasKey("AngleID");
+
+                    b.HasIndex("ShapeID");
+
+                    b.ToTable("Angle");
+                });
+
+            modelBuilder.Entity("Mason_Supply.Models.Leg", b =>
+                {
+                    b.Property<int>("LegID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Length")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("ShapeID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ShapeID1")
+                        .HasColumnType("int");
+
+                    b.HasKey("LegID");
+
+                    b.HasIndex("ShapeID");
+
+                    b.HasIndex("ShapeID1");
+
+                    b.ToTable("Leg");
+                });
+
+            modelBuilder.Entity("Mason_Supply.Models.Order", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Customer_Contact")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Customer_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Estimated_Cost")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("Order_date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("OrderID");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Mason_Supply.Models.Shape", b =>
+                {
+                    b.Property<int>("ShapeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Leg_Num")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rebar_Type")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Total_Cost")
+                        .HasColumnType("float");
+
+                    b.HasKey("ShapeID");
+
+                    b.HasIndex("OrderID");
+
+                    b.ToTable("Shapes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -217,6 +318,31 @@ namespace Mason_Supply.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Mason_Supply.Models.Angle", b =>
+                {
+                    b.HasOne("Mason_Supply.Models.Shape", null)
+                        .WithMany("Angle_List")
+                        .HasForeignKey("ShapeID");
+                });
+
+            modelBuilder.Entity("Mason_Supply.Models.Leg", b =>
+                {
+                    b.HasOne("Mason_Supply.Models.Shape", null)
+                        .WithMany("Crude_Leg_List")
+                        .HasForeignKey("ShapeID");
+
+                    b.HasOne("Mason_Supply.Models.Shape", null)
+                        .WithMany("Leg_List")
+                        .HasForeignKey("ShapeID1");
+                });
+
+            modelBuilder.Entity("Mason_Supply.Models.Shape", b =>
+                {
+                    b.HasOne("Mason_Supply.Models.Order", null)
+                        .WithMany("ShapeList")
+                        .HasForeignKey("OrderID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
